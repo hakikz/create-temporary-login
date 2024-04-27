@@ -1,0 +1,152 @@
+.ctl-spinner {
+    animation: rotate 1.5s linear infinite;
+    width: 50px;
+    height: 50px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.ctl-animate {
+    font-size: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.ctl-expiration{
+    display: block;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 12px;
+    color: #3c434a;
+}
+
+.ctl-expiration {
+    margin: 15px 0 0 0;
+}
+
+.ctl-delete {
+    position: absolute;
+    right: 0;
+    bottom: -13px;
+    background-color: #a00;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.ctl-expiration small{
+    background-color: #3c434a;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.ctl-expiration-extend a {
+    text-decoration: none;
+}
+
+.ctl-expiration-extend a span {
+    font-size: 17px;
+}
+
+.ctl-expiration-extend a{
+    background-color: #20800b;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 50px;
+    font-size: smaller;
+}
+
+.ctl-danger{
+    color: #ffffff;
+    background-color: #a00 !important;
+}
+
+.ctl-display-none{
+    display: none;
+}
+
+@keyframes rotate {
+    0% { 
+        transform: rotate(0); 
+    }
+    100% { 
+        transform: rotate(359deg);
+    }
+}
+
+/* Settings Page Design */
+.ctl_tokens li {
+    display: block;
+    margin-bottom: 10px;
+    max-width: 700px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #dadada;
+    position: relative;
+}
+
+.ctl_tokens li div {
+    display: flex;
+}
+
+.ctl_tokens li div p:not(:first-child){
+    margin-left: 5px;
+}
+
+.ctl_tokens li a.ctl_token:first-child {
+    padding: 5px;
+    display: inline-block;
+    border: 1px dashed #3c434a;
+    text-decoration: none;
+    color: #3c434a;
+    font-size: 18px;
+    width: auto;    
+    cursor: copy;
+    position: relative;
+}
+
+.ctl_tokens li a span.ctl-tip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    background: #2271b1;
+    color: #ffffff;
+    padding: 0 5px;
+    transition: 1s opacity ease-in-out;
+}
+
+.ctl_tokens li a span.ctl-tip.ctl-tip-hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+.ctl_tokens li a span.ctl-tip.ctl-tip-visible{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.ctl_tokens li a.ctl_delete_link span{
+    color: #ffffff;
+    font-size: 17px;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.ctl_token span.dashicons{
+    color: #ffffff;
+    background: #3c434a;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.ctl_token span.ctl_link {
+    margin-top: 7px;
+    display: inline-block;
+}
