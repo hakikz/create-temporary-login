@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) or die( 'Keep Quit' );
 /**
  * 
  */
-class Admin{
+class CTLHZ_Admin{
 
 	protected static $_instance = null;
 
@@ -37,7 +37,7 @@ class Admin{
 		// Redirect to Dashboard
 		add_action( 'template_redirect', array( $this, 'redirect_to_dashboard' ) );
 		// Settings page link on plugin listing page
-		add_filter( 'plugin_action_links_'. plugin_basename( CTL_PLUGIN_FILE ), array( $this, 'login_settings_link' ) );
+		add_filter( 'plugin_action_links_'. plugin_basename( CTLAZ_TEMP_LOGIN_FILE ), array( $this, 'login_settings_link' ) );
 		// Disallow Password Reset for Temp Users
 		add_filter( 'allow_password_reset', array( $this, 'disallow_password_reset' ), 10, 2 );
 		// Disallow direct login access for Temp Users
@@ -62,8 +62,8 @@ class Admin{
 	 * Enqueue Scripts
 	 */
 	public function enqueue_srcipts(){
-		wp_enqueue_style( 'ctl-admin', plugins_url( '/admin/css/admin.css', CTL_PLUGIN_FILE ), array(), CTL_VERSION, 'all' );
-		wp_enqueue_script( 'ctl-admin',  plugins_url( '/admin/js/admin.js', CTL_PLUGIN_FILE ), array('jquery'), CTL_VERSION, true );
+		wp_enqueue_style( 'ctl-admin', plugins_url( '/admin/css/admin.css', CTLAZ_TEMP_LOGIN_FILE ), array(), CTLAZ_TEMP_LOGIN_VERSION, 'all' );
+		wp_enqueue_script( 'ctl-admin',  plugins_url( '/admin/js/admin.js', CTLAZ_TEMP_LOGIN_FILE ), array('jquery'), CTLAZ_TEMP_LOGIN_VERSION, true );
 		wp_localize_script( 'ctl-admin', 'ctl_admin_ajax_object', array( 
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'ctl_nonce_field' => wp_create_nonce( 'ctl-create-link' )
@@ -75,7 +75,7 @@ class Admin{
 	 */
 	public function create_temporary_login(){
 		// If found a user_id as a get delete the user
-		if ( isset($_GET['ctl_delete_link_nonce']) && wp_verify_nonce($_GET['ctl_delete_link_nonce'], 'ctl_delete_link') ){
+		if ( isset($_GET['ctl_delete_link_nonce']) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ctl_delete_link_nonce'] ) ), 'ctl_delete_link') ){
 			$delete_user = wp_delete_user( sanitize_text_field( $_GET['user_id'] ) );
 			if( $delete_user ){
 				wp_safe_redirect( esc_url( admin_url('users.php?page=create-temporary-login') ) );
@@ -83,8 +83,8 @@ class Admin{
 		}
 
 		// If found a user_id as a extend link for the user
-		if ( isset($_GET['ctl_extend_link_nonce']) && wp_verify_nonce($_GET['ctl_extend_link_nonce'], 'ctl_extend_link') ){
-			$extend_link = create_temporary_login()->get_option()->extend_expiration($_GET['user_id']);
+		if ( isset($_GET['ctl_extend_link_nonce']) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ctl_extend_link_nonce'] ) ), 'ctl_extend_link') ){
+			$extend_link = ctlaz_create_temporary_login()->get_option()->extend_expiration( sanitize_text_field( $_GET['user_id'] ) );
 			if( $extend_link ){
 				wp_safe_redirect( esc_url( admin_url('users.php?page=create-temporary-login') ) );
 			}
@@ -135,15 +135,15 @@ class Admin{
 					// Copied text after clicking on link
 					esc_html__( 'Copied', 'create-temporary-login' ),
 					// Human readable time to show how many days are remaining
-					create_temporary_login()->get_option()->human_readable_duration( $user->ID ),
+					ctlaz_create_temporary_login()->get_option()->human_readable_duration( $user->ID ),
 					// Text of the Extend Button
 					esc_html__( 'Extend 3 days', 'create-temporary-login' ),
 					// Link of extend time for the link
 					esc_url( wp_nonce_url( admin_url("users.php?page=create-temporary-login&user_id={$user->ID}"), 'ctl_extend_link', 'ctl_extend_link_nonce' ) ),
 					// Add background color to red if link is expired
-					create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-danger' : '',
+					ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-danger' : '',
 					// Hide extend button if not expired
-					!create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-display-none' : ''
+					!ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-display-none' : ''
 
 				);
 			}
@@ -174,7 +174,7 @@ class Admin{
 				'meta_input'           => array(
 					'ctl_token' => sanitize_text_field( $uniqid ),
 					'ctl_user' => sanitize_text_field( 'yes' ),
-					'ctl_expiration' => create_temporary_login()->get_option()->get_max_expired_time()
+					'ctl_expiration' => ctlaz_create_temporary_login()->get_option()->get_max_expired_time()
 				)
 			);
 			$user_id = wp_insert_user( $data );
@@ -204,7 +204,7 @@ class Admin{
 			if ( 
 				$user 
 				&& wp_check_password( sanitize_text_field( "ctl_password_".sanitize_key( $_GET['ctl_token'] ) ), $user->data->user_pass, $user->ID) 
-				&& !create_temporary_login()->get_option()->is_user_expired( $user->ID )
+				&& !ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID )
 			) {
 			    wp_set_current_user($user->ID, $user->user_login);
 			    wp_set_auth_cookie($user->ID);
@@ -253,7 +253,7 @@ class Admin{
 	 * @return     bool    ( description_of_the_return_value )
 	 */
 	public function disallow_password_reset( $allow, $user_ID ){
-		if ( ! empty( $user_ID ) && create_temporary_login()->get_option()->is_temporary_user( $user_ID ) ) {
+		if ( ! empty( $user_ID ) && ctlaz_create_temporary_login()->get_option()->is_temporary_user( $user_ID ) ) {
 			$allow = false;
 		}
 
@@ -269,7 +269,7 @@ class Admin{
 	 * @return     \     ( description_of_the_return_value )
 	 */
 	public function disallow_temporary_user_login( $user ) {
-		if ( $user instanceof \WP_User && create_temporary_login()->get_option()->is_temporary_user( $user->ID ) ) {
+		if ( $user instanceof \WP_User && ctlaz_create_temporary_login()->get_option()->is_temporary_user( $user->ID ) ) {
 			$user = new \WP_Error(
 				'invalid_username',
 				__( '<strong>Error:</strong> The username is not registered on this site. If you are unsure of your username, try your email address instead.', 'create-temporary-login' )

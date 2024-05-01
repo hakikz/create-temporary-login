@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) or die( 'Keep Quit' );
 /**
  * 
  */
-class Create_Temporary_Login{
+class CTLAZ_Create_Temporary_Login{
 
 	protected static $_instance = null;
 
@@ -57,7 +57,7 @@ class Create_Temporary_Login{
      */
 
     public function get_option(){
-        return Option::instance();
+        return CTLHZ_Option::instance();
     }
 
     /**
@@ -67,7 +67,7 @@ class Create_Temporary_Login{
      */
 
     public function get_admin(){
-        return Admin::instance();
+        return CTLHZ_Admin::instance();
     }
 
 }

@@ -1,15 +1,17 @@
 <?php
 /*
-Plugin Name: Create Temporary Login
-Plugin URI: https://wordpress.org/plugins/create-temporary-login
-Description: Create passwordless temporary login links to easily give access to your site's dashboard.
-Version: 1.0.0
-Author: Hakik Zaman
-Author URI: https://profiles.wordpress.org/users/hakik	
-Text Domain: create-temporary-login
-Domain Path: /languages/
-Requires at least: 4.0
-Tested up to: 6.4
+Plugin Name:        Create Temporary Login
+Plugin URI:         https://wordpress.org/plugins/create-temporary-login
+Description:        Create passwordless temporary login links to easily give access to your site's dashboard.
+Version:            1.0.1
+Author:             Hakik Zaman
+Author URI:         https://profiles.wordpress.org/users/hakik	
+License:            GPL v2 or later 
+License URI:        https://www.gnu.org/licenses/gpl-2.0.html 
+Text Domain:        create-temporary-login
+Domain Path:        /languages
+Requires at least:  5.2
+Tested up to:       6.5
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -17,19 +19,19 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Defining the constants
  */
-if ( ! defined( 'CTL_VERSION' ) ) {
-    define( 'CTL_VERSION', '1.0.0' );
+if ( ! defined( 'CTLAZ_TEMP_LOGIN_VERSION' ) ) {
+    define( 'CTLAZ_TEMP_LOGIN_VERSION', '1.0.1' );
 }
 
-if ( ! defined( 'CTL_PLUGIN_FILE' ) ) {
-    define( 'CTL_PLUGIN_FILE', __FILE__ );
+if ( ! defined( 'CTLAZ_TEMP_LOGIN_FILE' ) ) {
+    define( 'CTLAZ_TEMP_LOGIN_FILE', __FILE__ );
 }
 
 /**
  * Include the main class.
  */
-if ( ! class_exists( 'Create_Temporary_Login', false ) ) {
-    require_once dirname( CTL_PLUGIN_FILE ) . '/includes/class-create-temporary-login.php';
+if ( ! class_exists( 'CTLAZ_Create_Temporary_Login', false ) ) {
+    require_once dirname( CTLAZ_TEMP_LOGIN_FILE ) . '/includes/class-create-temporary-login.php';
 }
 
 
@@ -38,9 +40,9 @@ if ( ! class_exists( 'Create_Temporary_Login', false ) ) {
  *
  * @return     <instance>  ( the core class )
  */
-function create_temporary_login() {
+function ctlaz_create_temporary_login() {
 
-    return Create_Temporary_Login::instance();
+    return CTLAZ_Create_Temporary_Login::instance();
 }
 
-add_action( 'plugins_loaded', 'create_temporary_login' );
+add_action( 'plugins_loaded', 'ctlaz_create_temporary_login' );

@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) or die( 'Keep Quit' );
 /**
  * 
  */
-class Option{
+class CTLHZ_Option{
 
 	protected static $_instance = null;
 
@@ -50,7 +50,11 @@ class Option{
 		if( $this->is_user_expired( $user_ID ) ){
 			return esc_html__( 'Expired', 'create-temporary-login' );
 		}
-		return esc_html__( 'Will be expired after:&nbsp;' ) . human_time_diff( $this->get_expiration( $user_ID ), current_time('U') );
+		return sprintf( 
+			/* translators: %s: How many days remaining */
+			 esc_html__( 'Will be expired after:&nbsp;%s', 'plugin-slug' ),
+			 wp_kses_post( human_time_diff( $this->get_expiration( $user_ID ), current_time('U') ) )
+		 );
 	}
 
 	public function extend_expiration( $user_ID ) {

@@ -4,7 +4,7 @@ Tags: temporary login, passwordless login, temporary access, login
 Requires PHP: 7.4
 Requires at least: 6.2
 Tested up to: 6.5
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ Allowing temporary access to your WordPress site was never easier. Create a temp
 Not to worry. The URL is automatically disabled at the expiration time with no action needed on your part.
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix: Plugin file header, sanitize for wp_nonce, prefix relared issue, internationalization issues.
 
 = 1.0.0 =
 * Initial release
