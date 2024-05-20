@@ -1,10 +1,10 @@
-=== Create Temporary Login ===
+=== Bifröst WP - Create Passwordless Temporary Login Links ===
 Contributors: Hakik
 Tags: temporary login, passwordless login, temporary access, login
 Requires PHP: 7.4
 Requires at least: 6.2
 Tested up to: 6.5
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,10 @@ Create passwordless temporary login links to easily give access to your site's d
 == Description ==
 
 Create Temporary Login helps you create secure passwordless links that allow instant access to your WordPress dashboard.
+
+=== How to Create Passwordless Temporary Login Links? ===
+
+[youtube https://www.youtube.com/watch?v=jMTwoAtKlUk]
 
 How often do you need to allow someone access to your WordPress site? There are many cases when you need to allow people access to your site, including support engineers. 
 
@@ -39,8 +43,14 @@ Not to worry. The URL is automatically disabled at the expiration time with no a
 
 == Changelog ==
 
+= 1.0.2 =
+* Add: Disallow the temporary user to delete an user of the site.
+* Add: POT file added.
+* Fix: Text domain for a method.
+* Fix: Headers already sent warning after deleting a link.
+
 = 1.0.1 =
-* Fix: Plugin file header, sanitize for wp_nonce, prefix relared issue, internationalization issues.
+* Fix: Plugin file header, sanitize for wp_nonce, prefix related issue, internationalization issues.
 
 = 1.0.0 =
 * Initial release

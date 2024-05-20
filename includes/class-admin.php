@@ -42,6 +42,8 @@ class CTLHZ_Admin{
 		add_filter( 'allow_password_reset', array( $this, 'disallow_password_reset' ), 10, 2 );
 		// Disallow direct login access for Temp Users
 		add_filter( 'wp_authenticate_user', array( $this, 'disallow_temporary_user_login' ) );
+		// Set redirect before the plugin render the plugin settings page
+		add_action( 'admin_init', array( $this,'set_header_redirect' ) );
 	}
 
 	/**
@@ -70,10 +72,11 @@ class CTLHZ_Admin{
 		) );
 	}
 
+	
 	/**
-	 * Create Temporary Login Interface
+	 * Sets the header redirect.
 	 */
-	public function create_temporary_login(){
+	public function set_header_redirect(){
 		// If found a user_id as a get delete the user
 		if ( isset($_GET['ctl_delete_link_nonce']) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ctl_delete_link_nonce'] ) ), 'ctl_delete_link') ){
 			$delete_user = wp_delete_user( sanitize_text_field( $_GET['user_id'] ) );
@@ -89,8 +92,14 @@ class CTLHZ_Admin{
 				wp_safe_redirect( esc_url( admin_url('users.php?page=create-temporary-login') ) );
 			}
 		}
+	}
 
-		echo "<h1>".esc_html__( 'Create Temporary Login Settings', 'create-temporary-login' )."</h1>";
+	/**
+	 * Create Temporary Login Interface
+	 */
+	public function create_temporary_login(){
+
+		echo "<h1>".esc_html__( 'Bifröst WP - Settings (Create Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
 		$other_attributes = array( 'tabindex' => '1' );
 		submit_button( __( 'Generate a link', 'create-temporary-login' ), 'secondary ctl_generate_link', '', true, $other_attributes );
 
@@ -135,7 +144,7 @@ class CTLHZ_Admin{
 					// Copied text after clicking on link
 					esc_html__( 'Copied', 'create-temporary-login' ),
 					// Human readable time to show how many days are remaining
-					ctlaz_create_temporary_login()->get_option()->human_readable_duration( $user->ID ),
+					ctlaz_create_temporary_login()->get_option()->get_human_readable_link_duration( $user->ID ),
 					// Text of the Extend Button
 					esc_html__( 'Extend 3 days', 'create-temporary-login' ),
 					// Link of extend time for the link
@@ -181,7 +190,7 @@ class CTLHZ_Admin{
 			if ( ! is_wp_error( $user_id ) ) {
 		
 			    echo absint( $user_id );
-					wp_die();
+				wp_die();
 				
 			}
 			

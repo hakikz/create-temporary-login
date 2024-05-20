@@ -48,7 +48,22 @@ class CTLAZ_Create_Temporary_Login{
 
         $this->get_option();
         $this->get_admin();
+        $this->set_hooks();
     } 
+
+    /**
+     * Sets the hooks.
+     */
+    public function set_hooks(){
+        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 10 );
+    }
+
+    /**
+     * Loads a textdomain.
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain( 'create-temporary-login', false, basename( dirname( CTLAZ_TEMP_LOGIN_FILE ) )."/languages" );
+    }
 
     /**
      *
