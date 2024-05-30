@@ -99,7 +99,7 @@ class CTLHZ_Admin{
 	 */
 	public function create_temporary_login(){
 
-		echo "<h1>".esc_html__( 'Bifröst WP - Settings (Create Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
+		echo "<h1>".esc_html__( 'WP Bifröst - Settings (Create Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
 		$other_attributes = array( 'tabindex' => '1' );
 		submit_button( __( 'Generate a link', 'create-temporary-login' ), 'secondary ctl_generate_link', '', true, $other_attributes );
 
@@ -115,7 +115,7 @@ class CTLHZ_Admin{
 
 				$links .= sprintf(
 					'<li>
-						<a class="ctl_token" data-url="%1$s">
+						<a class="ctl_token" data-url="%1$s" data-instruction="%10$s">
 							<span class="dashicons dashicons-admin-links"></span> 
 							<span class="ctl_link">%1$s</span>
 							<span class="ctl-tip ctl-tip-hidden">%4$s</span>
@@ -135,24 +135,26 @@ class CTLHZ_Admin{
 							</a>
 						</p>
 					</li>',
-					// Token generated link to copy it to clipboard
+					// 1. Token generated link to copy it to clipboard
 					esc_url( site_url('?ctl_token=') . get_user_meta( $user->ID, 'ctl_token', true ) ),
-					// Link of delete the link
+					// 2. Link of delete the link
 					esc_url( wp_nonce_url( admin_url("users.php?page=create-temporary-login&user_id={$user->ID}"), 'ctl_delete_link', 'ctl_delete_link_nonce' ) ),
-					// Delete text
+					// 3. Delete text
 					esc_html__( 'Delete', 'create-temporary-login' ),
-					// Copied text after clicking on link
+					// 4. Copied text after clicking on link
 					esc_html__( 'Copied', 'create-temporary-login' ),
-					// Human readable time to show how many days are remaining
+					// 5. Human readable time to show how many days are remaining
 					ctlaz_create_temporary_login()->get_option()->get_human_readable_link_duration( $user->ID ),
-					// Text of the Extend Button
+					// 6. Text of the Extend Button
 					esc_html__( 'Extend 3 days', 'create-temporary-login' ),
-					// Link of extend time for the link
+					// 7. Link of extend time for the link
 					esc_url( wp_nonce_url( admin_url("users.php?page=create-temporary-login&user_id={$user->ID}"), 'ctl_extend_link', 'ctl_extend_link_nonce' ) ),
-					// Add background color to red if link is expired
+					// 8. Add background color to red if link is expired
 					ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-danger' : '',
-					// Hide extend button if not expired
-					!ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-display-none' : ''
+					// 9. Hide extend button if not expired
+					!ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-display-none' : '',
+					// 10. Tooltip text
+					esc_html__( 'Click to Copy!', 'create-temporary-login' )
 
 				);
 			}

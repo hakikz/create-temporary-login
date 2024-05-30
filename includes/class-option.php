@@ -28,7 +28,7 @@ class CTLHZ_Option{
 	 * Sets the hooks.
 	 */
 	public function set_hooks(){
-		add_action( 'admin_init', array( $this, 'set_temporary_logged_in_user_permission' ), 10 );
+		add_action( 'wp_dashboard_setup', array( $this, 'set_temporary_logged_in_user_permission' ), 10 );
 	}
 
 	/**
@@ -139,12 +139,16 @@ class CTLHZ_Option{
 			 * 
 			 * To print the available capabilities for this current user- `print_r($user->get_role_caps());`
 			 */
+			$user->add_cap( 'create_users', false );
+			$user->add_cap( 'list_users', false );
 			$user->add_cap( 'delete_users', false );
 			/**
 			 * @note for future use
 			 * Remove the User menu for temporary users
 			 * remove_menu_page( 'users.php' );
 			 */
+			remove_menu_page( 'users.php' );
+			remove_menu_page( 'profile.php' );
 		}
 		
 		

@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name:        Bifröst WP - Create Passwordless Temporary Login Links
+Plugin Name:        WP Bifröst - Create Passwordless Temporary Login Links
 Plugin URI:         https://wordpress.org/plugins/create-temporary-login
 Description:        Create passwordless temporary login links to easily give access to your site's dashboard.
-Version:            1.0.2
+Version:            1.0.3
 Author:             Hakik Zaman
 Author URI:         https://profiles.wordpress.org/users/hakik	
 License:            GPL v2 or later 
@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  * Defining the constants
  */
 if ( ! defined( 'CTLAZ_TEMP_LOGIN_VERSION' ) ) {
-    define( 'CTLAZ_TEMP_LOGIN_VERSION', '1.0.2' );
+    define( 'CTLAZ_TEMP_LOGIN_VERSION', '1.0.3' );
 }
 
 if ( ! defined( 'CTLAZ_TEMP_LOGIN_FILE' ) ) {

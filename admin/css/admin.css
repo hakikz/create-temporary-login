@@ -101,7 +101,7 @@
 
 .ctl_tokens li a.ctl_token:first-child {
     padding: 5px;
-    display: inline-block;
+    display: block;
     border: 1px dashed #3c434a;
     text-decoration: none;
     color: #3c434a;
@@ -131,6 +131,17 @@
     opacity: 1;
 }
 
+.ctl_tokens li a.ctl_delete_link {
+    display: block;
+}
+
+.ctl_tokens li a.ctl_delete_link:focus {
+    box-shadow: inset 0px 0px 5px #730b0b;
+    background-color: #a00;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
 
 .ctl_tokens li a.ctl_delete_link span{
     color: #ffffff;
@@ -149,4 +160,36 @@
 .ctl_token span.ctl_link {
     margin-top: 7px;
     display: inline-block;
+}
+.ctl_token:before {
+    content: attr(data-instruction);
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    top: -36px;
+    left: 50%;
+    margin-left: -60px;
+}
+.ctl_token:after {
+    content: " ";
+    position: absolute;
+    visibility: hidden;
+    top: -8px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.ctl_token:hover:before,
+.ctl_token:hover:after{
+    visibility: visible;
 }
