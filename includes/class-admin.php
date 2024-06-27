@@ -99,7 +99,7 @@ class CTLHZ_Admin{
 	 */
 	public function create_temporary_login(){
 
-		echo "<h1>".esc_html__( 'WP Bifröst - Settings (Create Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
+		echo "<h1>".esc_html__( 'WP Bifröst - Settings (Instant Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
 		$other_attributes = array( 'tabindex' => '1' );
 		submit_button( __( 'Generate a link', 'create-temporary-login' ), 'secondary ctl_generate_link', '', true, $other_attributes );
 
@@ -152,7 +152,8 @@ class CTLHZ_Admin{
 					// 8. Add background color to red if link is expired
 					ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-danger' : '',
 					// 9. Hide extend button if not expired
-					!ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-display-none' : '',
+					// !ctlaz_create_temporary_login()->get_option()->is_user_expired( $user->ID ) ? 'ctl-display-none' : '',
+					'',
 					// 10. Tooltip text
 					esc_html__( 'Click to Copy!', 'create-temporary-login' )
 
@@ -234,9 +235,9 @@ class CTLHZ_Admin{
 	/**
 	 * Adding settings menu to the plugin list page
 	 *
-	 * @param      <type>  $links  The links
+	 * @param      array  $links  The links
 	 *
-	 * @return     <type>  ( description_of_the_return_value )
+	 * @return     array  ( Array of the link to display in plugin list page under the plugin name )
 	 */
 	public function login_settings_link($links) { 
 	    // Build and escape the URL.
@@ -258,10 +259,10 @@ class CTLHZ_Admin{
 	/**
 	 * Disallow the user to reset password after loggedout
 	 *
-	 * @param      bool    $allow    The allow
-	 * @param      <type>  $user_ID  The user id
+	 * @param      bool    	$allow    The allow
+	 * @param      int  	$user_ID  The user id
 	 *
-	 * @return     bool    ( description_of_the_return_value )
+	 * @return     bool    	( Checking whether a temporary user admin or main admin )
 	 */
 	public function disallow_password_reset( $allow, $user_ID ){
 		if ( ! empty( $user_ID ) && ctlaz_create_temporary_login()->get_option()->is_temporary_user( $user_ID ) ) {
@@ -275,9 +276,9 @@ class CTLHZ_Admin{
 	/**
 	 * Disallow Temporary Users to direct login to the site
 	 *
-	 * @param      \     $user   The user
+	 * @param      object   The user
 	 *
-	 * @return     \     ( description_of_the_return_value )
+	 * @return     void     ( Sending an error to display for direct login attempt by temporary user )
 	 */
 	public function disallow_temporary_user_login( $user ) {
 		if ( $user instanceof \WP_User && ctlaz_create_temporary_login()->get_option()->is_temporary_user( $user->ID ) ) {

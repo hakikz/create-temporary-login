@@ -1,20 +1,24 @@
-=== WP Bifröst - Create Passwordless Temporary Login Links ===
+=== WP Bifröst - Instant Passwordless Temporary Login Links ===
 Contributors: Hakik
 Tags: temporary login, passwordless login, temporary access, login
 Requires PHP: 7.4
 Requires at least: 6.2
 Tested up to: 6.5
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create passwordless temporary login links to easily give access to your site's dashboard.
+🔗️ Create passwordless temporary login links. Instantly ⚡️
 
 == Description ==
 
-WP Bifröst helps you create secure passwordless links that allow instant access to your WordPress dashboard.
+**WP Bifröst** is a WordPress plugin that helps create instant passwordless login links. Use those links to securely allow people temporary admin access to your WordPress site (dashboard).
 
-=== How to Create Passwordless Temporary Login Links? ===
+As WordPress site owners, we frequently give temporary admin access to people. Among many cases, giving temporary admin access to support engineers to troubleshoot an issue is prominent. In contrast with the default process of creating a user, **WP Bifröst** can instantly create a secure login link.
+
+=== How to Create Passwordless Temporary Login Links for WordPress ===
+
+The following video demonstrates creating a temporary login link for WordPress using **WP Bifröst**.
 
 [youtube https://www.youtube.com/watch?v=jMTwoAtKlUk]
 
@@ -23,12 +27,36 @@ How often do you need to allow someone access to your WordPress site? There are 
 Allowing temporary access to your WordPress site was never easier. Create a temporary login URL to give people instant access to your site. You don't need any email address, username or password.
 
 
-## Features HIghlights:
+## 🔐️ Feature Highlight of WP Bifröst
 
-* Create passwordless instant login links for your WordPress site
-* Delete a login link when there is no use for it
-* Login links are valid for 7 days
-* You can increase the validity for 3 days
+🔑️ Instantly create passwordless temporary login links for WP.
+
+🔑️ Remove/delete temporary login links anytime you want.
+
+🔑️ By default, the temporary login links are valid for 7 days.
+
+🔑️ You can increase the validity by 3 days for expired login links.
+
+
+## How does WP Bifröst work
+
+You can create passwordless temporary login links after successfully installing **WP Bifröst** on your WordPress site. Like most WordPress plugins installation is very straightforward. Moreover, it does not require any additional configuration.
+
+WP Bifröst adds its option as a sub-menu under the WordPress **User** menu. You can also quickly access the menu from the installed plugins section. Under the plugin name, there is a quick link called **Create Login Links**. Click on **Create Login Links** to access plugin settings. You can create temporary login links from here by clicking the Generate button.
+
+By default, temporary login links are valid for 7 days. When the link expires after 7 days, you will find an option to extend the validity. You can extend validity for 3 days (you can keep repeating this process as long as necessary).
+
+
+## WP Bifröst prioritizes security
+
+🔒️ Though we want to add ease to your workflow, site security is our top priority. As a result, we have coupled ease and security together.
+
+🔒️ First, the temporary login link appends a cryptographically secure random byte stream. As a result, there is no pattern for people to predict/target.
+
+🔒️ Second, the link expires in 7 days. So, even if you don’t remove a link, access to your dashboard will not work.
+
+🔒️ On top of that, people who access your dashboard using the passwordless temporary login links, cannot access the **User** menu. As a result, they cannot create a new user or modify an existing user.
+
 
 == Installation ==
 1. Install using the WordPress built-in Plugin installer, or Extract the zip file and drop the contents in the wp-content/plugins/ directory of your WordPress installation.
@@ -38,8 +66,16 @@ Allowing temporary access to your WordPress site was never easier. Create a temp
 
 == Frequently Asked Questions ==
 
+= Why should I use WP Bifröst? =
+**WP Bifröst** aims to add ease to your workflow by simplifying user creation on your WordPress site. To create a WordPress user, you must perform at least four steps. Those steps include setting a username, email address, password, and the user's role.
+
+WP Bifröst simplifies the process and empowers you to create a passwordless login with a single click.
+
 = What if I forget to revoke access? =
 Not to worry. The URL is automatically disabled at the expiration time with no action needed on your part.
+
+= Can I share a feature request? =
+Yes, we appreciate your feedback and ideas. Please share your feature request here.
 
 == Screenshots ==
 
@@ -51,6 +87,9 @@ Not to worry. The URL is automatically disabled at the expiration time with no a
 6. Extend the time for the link for 3 days.
 
 == Changelog ==
+
+= 1.0.4 =
+* Update: Extend time for 3 days button is always visible now.
 
 = 1.0.3 =
 * Security: Temporary users are not allowed to access the User/Profile menu.
