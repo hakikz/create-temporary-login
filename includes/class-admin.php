@@ -99,6 +99,23 @@ class CTLHZ_Admin{
 	 */
 	public function create_temporary_login(){
 
+		/**
+		 * If current user is a temporary user and 
+		 * 
+		 * want to access the `Plugin Settings` page using the link
+		 * 
+		 */
+
+		if( is_user_logged_in() && 
+			ctlaz_create_temporary_login()->get_option()->is_temporary_user( get_current_user_id() ) 
+		){
+			/**
+			 * Redirect the user to the `Dashboard > index.php`
+			 */
+			wp_safe_redirect( admin_url() );
+		}
+
+
 		echo "<h1>".esc_html__( 'WP Bifröst - Settings (Instant Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
 		$other_attributes = array( 'tabindex' => '1' );
 		submit_button( __( 'Generate a link', 'create-temporary-login' ), 'secondary ctl_generate_link', '', true, $other_attributes );

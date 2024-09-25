@@ -3,8 +3,8 @@ Contributors: Hakik
 Tags: temporary login, passwordless login, temporary access, login
 Requires PHP: 7.4
 Requires at least: 6.2
-Tested up to: 6.5
-Stable tag: 1.0.4
+Tested up to: 6.6
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,8 +88,11 @@ Yes, we appreciate your feedback and ideas. Please share your feature request he
 
 == Changelog ==
 
+= 1.0.5 =
+* Fix: Disallowed a temporary user to access plugin setting page using a link.
+
 = 1.0.4 =
-* Update: Extend time for 3 days button is always visible now.
+* Update: Extend time for 3 days is always visible now.
 
 = 1.0.3 =
 * Security: Temporary users are not allowed to access the User/Profile menu.

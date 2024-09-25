@@ -2,67 +2,72 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Bifröst - Create Passwordless Temporary Login Links 1.0.3\n"
+"Project-Id-Version: WP Bifröst - Instant Passwordless Temporary Login Links 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/create-temporary-login\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Hakik Zaman <hakikzmn@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-30T06:31:54+00:00\n"
+"POT-Creation-Date: 2024-09-24T09:08:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: create-temporary-login\n"
 
 #. Plugin Name of the plugin
-msgid "WP Bifröst - Create Passwordless Temporary Login Links"
+#: create-temporary-login.php
+msgid "WP Bifröst - Instant Passwordless Temporary Login Links"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: create-temporary-login.php
 msgid "https://wordpress.org/plugins/create-temporary-login"
 msgstr ""
 
 #. Description of the plugin
+#: create-temporary-login.php
 msgid "Create passwordless temporary login links to easily give access to your site's dashboard."
 msgstr ""
 
 #. Author of the plugin
+#: create-temporary-login.php
 msgid "Hakik Zaman"
 msgstr ""
 
 #. Author URI of the plugin
+#: create-temporary-login.php
 msgid "https://profiles.wordpress.org/users/hakik"
 msgstr ""
 
-#: includes/class-admin.php:102
-msgid "WP Bifröst - Settings (Create Passwordless Temporary Login Links)"
+#: includes/class-admin.php:119
+msgid "WP Bifröst - Settings (Instant Passwordless Temporary Login Links)"
 msgstr ""
 
-#: includes/class-admin.php:104
+#: includes/class-admin.php:121
 msgid "Generate a link"
 msgstr ""
 
-#: includes/class-admin.php:143
+#: includes/class-admin.php:160
 msgid "Delete"
 msgstr ""
 
-#: includes/class-admin.php:145
+#: includes/class-admin.php:162
 msgid "Copied"
 msgstr ""
 
-#: includes/class-admin.php:149
+#: includes/class-admin.php:166
 msgid "Extend 3 days"
 msgstr ""
 
-#: includes/class-admin.php:157
+#: includes/class-admin.php:175
 msgid "Click to Copy!"
 msgstr ""
 
-#: includes/class-admin.php:249
+#: includes/class-admin.php:267
 msgid "Create Temporary Login"
 msgstr ""
 
-#: includes/class-admin.php:286
+#: includes/class-admin.php:304
 msgid "<strong>Error:</strong> The username is not registered on this site. If you are unsure of your username, try your email address instead."
 msgstr ""
 
