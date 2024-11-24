@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name:        WP Bifröst - Instant Passwordless Temporary Login Links
-Plugin URI:         https://wordpress.org/plugins/create-temporary-login
+Plugin Name:        WPBifröst - Instant Passwordless Temporary Login Links
+Plugin URI:         https://github.com/hakikz/create-temporary-login
 Description:        Create passwordless temporary login links to easily give access to your site's dashboard.
-Version:            1.0.5
+Version:            1.0.6
 Author:             Hakik Zaman
 Author URI:         https://profiles.wordpress.org/users/hakik	
 License:            GPL v2 or later 
@@ -11,7 +11,7 @@ License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:        create-temporary-login
 Domain Path:        /languages
 Requires at least:  5.2
-Tested up to:       6.6
+Tested up to:       6.7
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  * Defining the constants
  */
 if ( ! defined( 'CTLAZ_TEMP_LOGIN_VERSION' ) ) {
-    define( 'CTLAZ_TEMP_LOGIN_VERSION', '1.0.5' );
+    define( 'CTLAZ_TEMP_LOGIN_VERSION', '1.0.6' );
 }
 
 if ( ! defined( 'CTLAZ_TEMP_LOGIN_FILE' ) ) {

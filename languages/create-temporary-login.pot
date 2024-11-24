@@ -2,26 +2,26 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Bifröst - Instant Passwordless Temporary Login Links 1.0.5\n"
+"Project-Id-Version: WPBifröst - Instant Passwordless Temporary Login Links 1.0.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/create-temporary-login\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Hakik Zaman <hakikzmn@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-24T09:08:51+00:00\n"
+"POT-Creation-Date: 2024-11-24T09:29:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: create-temporary-login\n"
 
 #. Plugin Name of the plugin
 #: create-temporary-login.php
-msgid "WP Bifröst - Instant Passwordless Temporary Login Links"
+msgid "WPBifröst - Instant Passwordless Temporary Login Links"
 msgstr ""
 
 #. Plugin URI of the plugin
 #: create-temporary-login.php
-msgid "https://wordpress.org/plugins/create-temporary-login"
+msgid "https://github.com/hakikz/create-temporary-login"
 msgstr ""
 
 #. Description of the plugin
@@ -40,7 +40,7 @@ msgid "https://profiles.wordpress.org/users/hakik"
 msgstr ""
 
 #: includes/class-admin.php:119
-msgid "WP Bifröst - Settings (Instant Passwordless Temporary Login Links)"
+msgid "WPBifröst - Settings (Instant Passwordless Temporary Login Links)"
 msgstr ""
 
 #: includes/class-admin.php:121

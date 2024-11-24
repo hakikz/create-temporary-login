@@ -79,7 +79,7 @@ class CTLHZ_Admin{
 	public function set_header_redirect(){
 		// If found a user_id as a get delete the user
 		if ( isset($_GET['ctl_delete_link_nonce']) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ctl_delete_link_nonce'] ) ), 'ctl_delete_link') ){
-			$delete_user = wp_delete_user( sanitize_text_field( $_GET['user_id'] ) );
+			$delete_user = isset( $_GET['user_id'] ) ? wp_delete_user( sanitize_text_field( wp_unslash( $_GET['user_id'] ) ) ) : false;
 			if( $delete_user ){
 				wp_safe_redirect( esc_url( admin_url('users.php?page=create-temporary-login') ) );
 			}
@@ -87,7 +87,7 @@ class CTLHZ_Admin{
 
 		// If found a user_id as a extend link for the user
 		if ( isset($_GET['ctl_extend_link_nonce']) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ctl_extend_link_nonce'] ) ), 'ctl_extend_link') ){
-			$extend_link = ctlaz_create_temporary_login()->get_option()->extend_expiration( sanitize_text_field( $_GET['user_id'] ) );
+			$extend_link = isset( $_GET['user_id'] ) ? ctlaz_create_temporary_login()->get_option()->extend_expiration( sanitize_text_field( wp_unslash( $_GET['user_id'] ) ) ) : false;
 			if( $extend_link ){
 				wp_safe_redirect( esc_url( admin_url('users.php?page=create-temporary-login') ) );
 			}
@@ -116,7 +116,7 @@ class CTLHZ_Admin{
 		}
 
 
-		echo "<h1>".esc_html__( 'WP Bifröst - Settings (Instant Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
+		echo "<h1>".esc_html__( 'WPBifröst - Settings (Instant Passwordless Temporary Login Links)', 'create-temporary-login' )."</h1>";
 		$other_attributes = array( 'tabindex' => '1' );
 		submit_button( __( 'Generate a link', 'create-temporary-login' ), 'secondary ctl_generate_link', '', true, $other_attributes );
 
